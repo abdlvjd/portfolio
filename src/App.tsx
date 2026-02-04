@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import planzo from './Assets/planzo creations.png'
 import qrasys from './Assets/qrasys.png'
 import rill from './Assets/rill.png'
+import resume from './Assets/Abdul Vajid.pdf'
 import {
   Github,
   Linkedin,
@@ -96,7 +97,7 @@ function App() {
   const handleDownloadResume = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
-    link.href = '/path-to-your-resume.pdf'; // Replace with actual resume path
+    link.href = resume;
     link.download = 'Abdul_Vajid_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -115,7 +116,7 @@ function App() {
       description: ' Designed and developed a responsive professional website for Planzo Creations, showcasing real estate back-office and marketing services with structured sections, portfolio, and lead-generation forms.',
       tech: ['HTML', 'CSS', 'JavaScript', 'React.JS'],
       image: planzo,
-      demo: 'https://planzo.in/',
+      demo: 'https://www.planzocreations.com/',
       github: '#',
       problem: 'Planzo Creations required a professional, responsive business website to clearly present real estate back-office and marketing services, establish credibility, and generate qualified business leads through an online presence.',
       features: [
@@ -765,10 +766,10 @@ function App() {
                 <div className="min-w-0 flex-1">
                   <h3 className="font-bold text-gray-900 dark:text-white mb-1.5 sm:mb-2 text-base sm:text-lg">Phone</h3>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+971544551920"
                     className="text-sm sm:text-base text-emerald-600 dark:text-emerald-400 hover:underline focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded-lg px-2 py-1 font-medium"
                   >
-                    +1 (234) 567-890
+                    +971544551920
                   </a>
                 </div>
               </div>
@@ -802,7 +803,7 @@ function App() {
                       <span className="truncate">LinkedIn</span>
                     </a>
                     <a
-                      href="https://wa.me/1234567890"
+                      href="https://wa.me/+971544551920"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg sm:rounded-xl hover:bg-green-200 dark:hover:bg-green-900/50 transition-all hover:scale-105 font-medium text-green-700 dark:text-green-300"
@@ -811,7 +812,7 @@ function App() {
                       <span className="truncate">WhatsApp</span>
                     </a>
                     <a
-                      href="https://instagram.com/yourusername"
+                      href="https://www.instagram.com/abdl_vjd/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-pink-100 dark:bg-pink-900/30 rounded-lg sm:rounded-xl hover:bg-pink-200 dark:hover:bg-pink-900/50 transition-all hover:scale-105 font-medium text-pink-700 dark:text-pink-300"
