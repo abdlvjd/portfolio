@@ -145,40 +145,40 @@ function App() {
         'Reduced future development effort through reusable UI components'
       ]
     },
-    {
-      title: 'Qrasys Technologies',
-      description: 'Designed and developed a responsive corporate website for Qrasys Technologies to showcase IT services, company information, and enable client inquiries through a clean and professional interface.',
-      tech: ['HTML', 'CSS', 'JavaScript'],
-      image: qrasys,
-      demo: 'https://www.qrasys.com/',
-      github: '#',
-      problem: 'Qrasys Technologies needed a professional corporate website to present its IT services, build online credibility, and provide an easy way for potential clients to understand offerings and get in touch.',
-      features: [
-        'Responsive layout optimized for desktop, tablet, and mobile devices',
-        'Clear service presentation highlighting IT and software solutions',
-        'Structured content sections for About, Services, and Contact',
-        'User-friendly navigation for improved accessibility and usability',
-        'Contact form integration for client inquiries'
-      ],
-      challenges: [
-        'Maintaining consistent layout and styling across different screen sizes',
-        'Presenting multiple services clearly without overwhelming users',
-        'Ensuring fast load times with media-rich content',
-        'Creating a clean and professional UI suitable for a corporate audience'
-      ],
-      solutions: [
-        'Used semantic HTML and structured CSS for maintainable layouts',
-        'Applied responsive design principles to ensure cross-device compatibility',
-        'Optimized images and assets for better performance',
-        'Implemented simple JavaScript enhancements for smooth interactions'
-      ],
-      impact: [
-        'Delivered a professional corporate website used to represent an IT services company online',
-        'Improved clarity of service offerings and company presentation',
-        'Enabled direct client communication through integrated contact forms',
-        'Provided a scalable base for future content and service expansion'
-      ]
-    },
+    // {
+    //   title: 'Qrasys Technologies',
+    //   description: 'Designed and developed a responsive corporate website for Qrasys Technologies to showcase IT services, company information, and enable client inquiries through a clean and professional interface.',
+    //   tech: ['HTML', 'CSS', 'JavaScript'],
+    //   image: qrasys,
+    //   demo: 'https://www.qrasys.com/',
+    //   github: '#',
+    //   problem: 'Qrasys Technologies needed a professional corporate website to present its IT services, build online credibility, and provide an easy way for potential clients to understand offerings and get in touch.',
+    //   features: [
+    //     'Responsive layout optimized for desktop, tablet, and mobile devices',
+    //     'Clear service presentation highlighting IT and software solutions',
+    //     'Structured content sections for About, Services, and Contact',
+    //     'User-friendly navigation for improved accessibility and usability',
+    //     'Contact form integration for client inquiries'
+    //   ],
+    //   challenges: [
+    //     'Maintaining consistent layout and styling across different screen sizes',
+    //     'Presenting multiple services clearly without overwhelming users',
+    //     'Ensuring fast load times with media-rich content',
+    //     'Creating a clean and professional UI suitable for a corporate audience'
+    //   ],
+    //   solutions: [
+    //     'Used semantic HTML and structured CSS for maintainable layouts',
+    //     'Applied responsive design principles to ensure cross-device compatibility',
+    //     'Optimized images and assets for better performance',
+    //     'Implemented simple JavaScript enhancements for smooth interactions'
+    //   ],
+    //   impact: [
+    //     'Delivered a professional corporate website used to represent an IT services company online',
+    //     'Improved clarity of service offerings and company presentation',
+    //     'Enabled direct client communication through integrated contact forms',
+    //     'Provided a scalable base for future content and service expansion'
+    //   ]
+    // },
     {
       title: 'Rill Hospital',
       description: 'Built and deployed a responsive healthcare services website for Rill Hospital, providing clear information about hospital departments, services, and patient inquiry options.',
