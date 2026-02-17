@@ -27,7 +27,10 @@ import {
   Sparkles,
   MessageCircle,
   Instagram,
-  Phone
+  Phone,
+  GraduationCap,
+  Lock,
+  Clock
 } from 'lucide-react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -97,7 +100,6 @@ function App() {
       });
     }, 1000);
   };
-
 
   const handleCloseModal = () => {
     setSelectedProject(null);
@@ -293,25 +295,41 @@ function App() {
     }
   ];
 
+  const education = [
+    {
+      degree: 'Bachelor of Computer Science',
+      institution: 'University of Calicut',
+      period: '2019 – 2022',
+      description: 'Focused on computer science fundamentals, programming, and software development principles.'
+    },
+    {
+      degree: 'Full Stack Web Development (MERN)',
+      institution: 'Luminar Technolab',
+      period: '2023',
+      description: 'Intensive training in MongoDB, Express, React, and Node.js with hands-on project work.'
+    }
+  ];
+
   return (
     <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors ${hasReducedMotion ? 'motion-reduce' : ''}`}>
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md z-50 border-b border-gray-100 dark:border-slate-800/50 shadow-sm transition-colors">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent hover:from-purple-700 hover:to-indigo-700 dark:hover:from-purple-300 dark:hover:to-indigo-300 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg px-2 sm:px-3 py-1 sm:py-2"
+              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent hover:from-purple-700 hover:to-indigo-700 dark:hover:from-purple-300 dark:hover:to-indigo-300 transition-all  focus:ring-purple-500/50 rounded-lg px-2 sm:px-3 py-1 sm:py-2"
               aria-label="Abdul Vajid - Go to home"
             >
               AV
             </button>
             <div className="hidden md:flex gap-6 lg:gap-8">
-              {['about', 'skills', 'projects', 'experience', 'contact'].map((section) => (
+              {['about', 'skills', 'projects', 'experience', 'education', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className="text-sm lg:text-base text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors capitalize focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg px-2 lg:px-3 py-1 lg:py-2 font-medium relative group"
+                  className="text-sm lg:text-base text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors capitalize  focus:ring-purple-500/50 rounded-lg px-2 lg:px-3 py-1 lg:py-2 font-medium relative group"
                   aria-label={`Navigate to ${section} section`}
                 >
                   {section}
@@ -324,7 +342,7 @@ function App() {
                 href="https://github.com/abdlvjd"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5  focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
                 aria-label="GitHub profile"
               >
                 <Github size={18} className="sm:w-5 sm:h-5" />
@@ -333,7 +351,7 @@ function App() {
                 href="https://www.linkedin.com/in/abdul-vajid-509255312/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5  focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin size={18} className="sm:w-5 sm:h-5" />
@@ -352,7 +370,6 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center pt-24 sm:pt-24 px-4 sm:px-6 pb-12 sm:pb-0 relative overflow-hidden">
-        {/* Animated background gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 -right-40 w-60 h-60 sm:w-80 sm:h-80 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-0 -left-40 w-60 h-60 sm:w-80 sm:h-80 bg-indigo-300/20 dark:bg-indigo-500/10 rounded-full blur-2xl"></div>
@@ -381,13 +398,13 @@ function App() {
           <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 ${hasReducedMotion ? '' : 'opacity-0 animate-fade-in-delay-4'}`}>
             <button
               onClick={() => scrollToSection('projects')}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 font-medium text-sm sm:text-base"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1  focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 font-medium text-sm sm:text-base"
             >
               View Projects
             </button>
             <button
               onClick={handleDownloadResume}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium text-sm sm:text-base"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all hover:-translate-y-1  focus:ring-purple-500 font-medium text-sm sm:text-base"
             >
               Download Resume
             </button>
@@ -404,7 +421,7 @@ function App() {
           </div>
           <button
             onClick={() => scrollToSection('about')}
-            className={`mt-12 sm:mt-16 text-gray-400 dark:text-gray-500 hover:text-purple-600 dark:hover:text-purple-400 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-2 ${hasReducedMotion ? '' : 'animate-pulse'}`}
+            className={`mt-12 sm:mt-16 text-gray-400 dark:text-gray-500 hover:text-purple-600 dark:hover:text-purple-400 transition-all  focus:ring-purple-500/50 rounded-lg p-2 ${hasReducedMotion ? '' : 'animate-pulse'}`}
             aria-label="Scroll to about section"
           >
             <ChevronDown size={28} className="sm:w-8 sm:h-8" />
@@ -414,7 +431,6 @@ function App() {
 
       {/* About Section */}
       <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 right-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
         </div>
@@ -429,10 +445,10 @@ function App() {
           </div>
           <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-gray-100 dark:border-slate-700/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300">
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
-              I’m a React frontend developer with hands-on experience building production websites used by real businesses. I specialize in translating complex requirements into scalable, maintainable UI systems.
+              I'm a React frontend developer with hands-on experience building production websites used by real businesses. I specialize in translating complex requirements into scalable, maintainable UI systems.
             </p>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
-              I’ve worked on commercial projects across real estate and healthcare domains, building responsive interfaces, integrating APIs, and improving usability across devices.
+              I've worked on commercial projects across real estate and healthcare domains, building responsive interfaces, integrating APIs, and improving usability across devices.
             </p>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
               My focus is writing clean, modular code that is easy to maintain, performs reliably, and supports business growth — not just visually appealing interfaces.
@@ -447,41 +463,40 @@ function App() {
       {/* What I Bring Section */}
       <section className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-              What I Bring to a Team
-            </h2>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-emerald-100/80 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-xs sm:text-sm mb-3 sm:mb-4 border border-emerald-200/50 dark:border-emerald-700/50">
+              <Sparkles size={14} className="sm:w-4 sm:h-4" />
+              <span className="font-medium">My Value</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-purple-900 dark:from-white dark:to-purple-200 bg-clip-text text-transparent">What I Bring to a Team</h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Core strengths I focus on when building production frontend systems.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-
             {[
-              "Scalable component architecture designed for long-term maintainability",
-              "Ability to translate complex business requirements into intuitive UX",
-              "Clean, readable frontend code with strong separation of concerns",
-              "Proven ability to ship production-ready features efficiently"
+              { icon: '🏗️', text: 'Scalable component architecture designed for long-term maintainability' },
+              { icon: '🎯', text: 'Ability to translate complex business requirements into intuitive UX' },
+              { icon: '✨', text: 'Clean, readable frontend code with strong separation of concerns' },
+              { icon: '🚀', text: 'Proven ability to ship production-ready features efficiently' }
             ].map((item, i) => (
               <div
                 key={i}
-                className="p-5 rounded-xl bg-white/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm"
+                className="p-5 rounded-xl bg-white/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-200 hover:-translate-y-0.5"
               >
-                <p className="text-gray-700 dark:text-gray-300 font-medium">
-                  {item}
-                </p>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">{item.text}</p>
+                </div>
               </div>
             ))}
-
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
       <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute bottom-20 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
         </div>
@@ -499,7 +514,7 @@ function App() {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="group px-4 sm:px-6 py-2.5 sm:py-3.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-gray-200 dark:border-slate-700 rounded-lg sm:rounded-xl text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all cursor-default focus:outline-none focus:ring-2 focus:ring-purple-500/50 font-medium relative overflow-hidden"
+                className="group px-4 sm:px-6 py-2.5 sm:py-3.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-gray-200 dark:border-slate-700 rounded-lg sm:rounded-xl text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all cursor-default  focus:ring-purple-500/50 font-medium relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/5 to-purple-500/0 group-hover:via-purple-500/10 transition-all"></div>
                 <span className="relative">{skill}</span>
@@ -511,7 +526,6 @@ function App() {
 
       {/* Projects Section */}
       <section id="projects" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-0 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
@@ -526,7 +540,9 @@ function App() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-purple-900 dark:from-white dark:to-purple-200 bg-clip-text text-transparent mb-2 sm:mb-3">Projects</h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Production projects and real client work</p>
           </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Existing Project Cards */}
             {projects.map((project, index) => (
               <div
                 key={index}
@@ -557,7 +573,7 @@ function App() {
                   <div className="flex gap-2 sm:gap-3 mt-auto">
                     <button
                       onClick={() => setSelectedProject(index)}
-                      className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 font-medium text-xs sm:text-sm"
+                      className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30  focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 font-medium text-xs sm:text-sm"
                       aria-label={`View details for ${project.title}`}
                     >
                       <ChevronRight size={14} className="sm:w-4 sm:h-4" />
@@ -565,7 +581,7 @@ function App() {
                     </button>
                     <a
                       href={project.demo}
-                      className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 border-2 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 rounded-lg sm:rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium text-xs sm:text-sm"
+                      className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 border-2 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 rounded-lg sm:rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all  focus:ring-purple-500 font-medium text-xs sm:text-sm"
                       aria-label={`View live demo for ${project.title}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -577,6 +593,46 @@ function App() {
                 </div>
               </div>
             ))}
+
+            {/* Coming Soon Card */}
+            <div className="relative bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-dashed border-purple-300/60 dark:border-purple-600/40 flex flex-col h-full group hover:border-purple-400 dark:hover:border-purple-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10">
+
+              {/* Subtle animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 via-white/40 to-indigo-50/80 dark:from-purple-950/40 dark:via-slate-900/20 dark:to-indigo-950/40 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col items-center justify-center flex-grow p-8 sm:p-10 text-center min-h-[340px]">
+
+                {/* Lock / stealth icon */}
+                <div className="mb-5 relative">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/50 dark:to-indigo-900/50 border border-purple-200/70 dark:border-purple-700/50 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <Lock className="text-purple-500 dark:text-purple-400" size={24} />
+                  </div>
+                  {/* Pulse ring */}
+                  <div className="absolute inset-0 rounded-2xl border border-purple-400/30 dark:border-purple-500/20 animate-ping" />
+                </div>
+
+                {/* Label */}
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100/80 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded-full text-xs font-semibold border border-amber-200/60 dark:border-amber-700/40 mb-4">
+                  <Clock size={11} />
+                  In Progress
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">
+                  Something is being built
+                </h3>
+
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-[220px] mb-6">
+                  I'm currently working on a new project. Details will be revealed soon — stay tuned.
+                </p>
+
+                {/* Stay tuned pill */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600/10 to-indigo-600/10 dark:from-purple-500/20 dark:to-indigo-500/20 border border-purple-300/50 dark:border-purple-600/40 rounded-full">
+                  <Sparkles size={13} className="text-purple-500 dark:text-purple-400 flex-shrink-0" />
+                  <span className="text-xs font-semibold text-purple-700 dark:text-purple-300 tracking-wide">Stay Tuned</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -594,11 +650,10 @@ function App() {
             className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 dark:border-slate-700/50"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
             <div className="relative bg-gradient-to-br from-purple-500/10 via-purple-400/5 to-indigo-500/10 dark:from-purple-500/20 dark:via-purple-400/10 dark:to-indigo-500/20 px-4 sm:px-8 py-4 sm:py-6 border-b border-gray-200 dark:border-slate-700/50">
               <button
                 onClick={handleCloseModal}
-                className="absolute top-3 right-3 sm:top-6 sm:right-6 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg sm:rounded-xl p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-slate-800"
+                className="absolute top-3 right-3 sm:top-6 sm:right-6 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-all duration-200  focus:ring-purple-500/50 rounded-lg sm:rounded-xl p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-slate-800"
                 aria-label="Close project details"
               >
                 <X size={20} className="sm:w-6 sm:h-6" />
@@ -623,10 +678,8 @@ function App() {
               </div>
             </div>
 
-            {/* Modal Content - Scrollable */}
             <div className="overflow-y-auto max-h-[calc(90vh-120px)] sm:max-h-[calc(90vh-140px)] px-4 sm:px-8 py-4 sm:py-6">
               <div className="space-y-6 sm:space-y-8">
-                {/* Problem Statement */}
                 <div>
                   <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                     <div className="p-1.5 sm:p-2 bg-purple-100/80 dark:bg-purple-900/30 rounded-lg sm:rounded-xl border border-purple-200/50 dark:border-purple-700/50">
@@ -639,7 +692,6 @@ function App() {
                   </p>
                 </div>
 
-                {/* Key Features */}
                 <div>
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                     <div className="p-1.5 sm:p-2 bg-blue-100/80 dark:bg-blue-900/30 rounded-lg sm:rounded-xl border border-blue-200/50 dark:border-blue-700/50">
@@ -649,10 +701,7 @@ function App() {
                   </div>
                   <ul className="space-y-2 sm:space-y-3 ml-0 sm:ml-14">
                     {projects[selectedProject].features.map((feature, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300"
-                      >
+                      <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
                         <span className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 flex items-center justify-center text-white text-xs font-semibold mt-0.5 shadow-sm">
                           {i + 1}
                         </span>
@@ -662,7 +711,6 @@ function App() {
                   </ul>
                 </div>
 
-                {/* Technical Challenges */}
                 <div>
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                     <div className="p-1.5 sm:p-2 bg-amber-100/80 dark:bg-amber-900/30 rounded-lg sm:rounded-xl border border-amber-200/50 dark:border-amber-700/50">
@@ -672,10 +720,7 @@ function App() {
                   </div>
                   <ul className="space-y-2 sm:space-y-3 ml-0 sm:ml-14">
                     {projects[selectedProject].challenges.map((challenge, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-amber-50/80 dark:bg-amber-900/10 p-2 sm:p-3 rounded-lg sm:rounded-xl border-l-4 border-amber-400 dark:border-amber-500 backdrop-blur-sm"
-                      >
+                      <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-amber-50/80 dark:bg-amber-900/10 p-2 sm:p-3 rounded-lg sm:rounded-xl border-l-4 border-amber-400 dark:border-amber-500 backdrop-blur-sm">
                         <AlertCircle className="flex-shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" size={16} />
                         <span className="leading-relaxed">{challenge}</span>
                       </li>
@@ -683,7 +728,6 @@ function App() {
                   </ul>
                 </div>
 
-                {/* Solution Approach */}
                 <div>
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                     <div className="p-1.5 sm:p-2 bg-emerald-100/80 dark:bg-emerald-900/30 rounded-lg sm:rounded-xl border border-emerald-200/50 dark:border-emerald-700/50">
@@ -693,10 +737,7 @@ function App() {
                   </div>
                   <ul className="space-y-2 sm:space-y-3 ml-0 sm:ml-14">
                     {projects[selectedProject].solutions.map((solution, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-emerald-50/80 dark:bg-emerald-900/10 p-2 sm:p-3 rounded-lg sm:rounded-xl border-l-4 border-emerald-400 dark:border-emerald-500 backdrop-blur-sm"
-                      >
+                      <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-emerald-50/80 dark:bg-emerald-900/10 p-2 sm:p-3 rounded-lg sm:rounded-xl border-l-4 border-emerald-400 dark:border-emerald-500 backdrop-blur-sm">
                         <Lightbulb className="flex-shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" size={16} />
                         <span className="leading-relaxed">{solution}</span>
                       </li>
@@ -704,7 +745,6 @@ function App() {
                   </ul>
                 </div>
 
-                {/* Impact & Results */}
                 <div>
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                     <div className="p-1.5 sm:p-2 bg-indigo-100/80 dark:bg-indigo-900/30 rounded-lg sm:rounded-xl border border-indigo-200/50 dark:border-indigo-700/50">
@@ -714,10 +754,7 @@ function App() {
                   </div>
                   <ul className="space-y-2 sm:space-y-3 ml-0 sm:ml-14">
                     {projects[selectedProject].impact.map((impacts, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-indigo-50/80 dark:bg-indigo-900/10 p-2 sm:p-3 rounded-lg sm:rounded-xl border-l-4 border-indigo-400 dark:border-indigo-500 backdrop-blur-sm"
-                      >
+                      <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-indigo-50/80 dark:bg-indigo-900/10 p-2 sm:p-3 rounded-lg sm:rounded-xl border-l-4 border-indigo-400 dark:border-indigo-500 backdrop-blur-sm">
                         <TrendingUp className="flex-shrink-0 text-indigo-600 dark:text-indigo-400 mt-0.5" size={16} />
                         <span className="leading-relaxed">{impacts}</span>
                       </li>
@@ -732,7 +769,6 @@ function App() {
 
       {/* Experience Section */}
       <section id="experience" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
         </div>
@@ -767,9 +803,44 @@ function App() {
         </div>
       </section>
 
+      {/* Education Section */}
+      <section id="education" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute bottom-0 right-0 w-56 h-56 sm:w-72 sm:h-72 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-purple-100/80 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs sm:text-sm mb-3 sm:mb-4 border border-purple-200/50 dark:border-purple-700/50">
+              <GraduationCap size={14} className="sm:w-4 sm:h-4" />
+              <span className="font-medium">Academic Background</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-purple-900 dark:from-white dark:to-purple-200 bg-clip-text text-transparent mb-2 sm:mb-3">Education</h2>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Academic and professional training</p>
+          </div>
+          <div className="space-y-4 sm:space-y-6">
+            {education.map((edu, index) => (
+              <div
+                key={index}
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all border-l-4 border-indigo-400 dark:border-indigo-500 hover:-translate-y-1 duration-300 border border-gray-100 dark:border-slate-700/50"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2 sm:mb-3 gap-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">{edu.degree}</h3>
+                  <span className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-100/80 dark:bg-indigo-900/30 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-indigo-200/50 dark:border-indigo-700/50 inline-block w-fit">{edu.period}</span>
+                </div>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-semibold mb-2 sm:mb-3 flex items-center gap-2">
+                  <GraduationCap size={14} className="sm:w-4 sm:h-4 text-indigo-500 dark:text-indigo-400" />
+                  {edu.institution}
+                </p>
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">{edu.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute bottom-0 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
           <div className="absolute top-20 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
@@ -796,7 +867,7 @@ function App() {
                   <h3 className="font-bold text-gray-900 dark:text-white mb-1.5 sm:mb-2 text-base sm:text-lg">Email</h3>
                   <a
                     href="mailto:abdulvajidonwork@gmail.com"
-                    className="text-sm sm:text-base text-purple-600 dark:text-purple-400 hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg px-2 py-1 font-medium break-all"
+                    className="text-sm sm:text-base text-purple-600 dark:text-purple-400 hover:underline  focus:ring-purple-500/50 rounded-lg px-2 py-1 font-medium break-all"
                   >
                     abdulvajidonwork@gmail.com
                   </a>
@@ -814,7 +885,7 @@ function App() {
                   <h3 className="font-bold text-gray-900 dark:text-white mb-1.5 sm:mb-2 text-base sm:text-lg">Phone</h3>
                   <a
                     href="tel:+971544551920"
-                    className="text-sm sm:text-base text-emerald-600 dark:text-emerald-400 hover:underline focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded-lg px-2 py-1 font-medium"
+                    className="text-sm sm:text-base text-emerald-600 dark:text-emerald-400 hover:underline  focus:ring-emerald-500/50 rounded-lg px-2 py-1 font-medium"
                   >
                     +971544551920
                   </a>
@@ -822,7 +893,7 @@ function App() {
               </div>
             </div>
 
-            {/* Social Links Card - Full Width */}
+            {/* Social Links Card */}
             <div className="sm:col-span-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all border border-gray-100 dark:border-slate-700/50">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="p-2 sm:p-3 bg-indigo-100/80 dark:bg-indigo-900/30 rounded-xl sm:rounded-2xl border border-indigo-200/50 dark:border-indigo-700/50 flex-shrink-0">
@@ -885,7 +956,7 @@ function App() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 text-sm sm:text-base border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 text-sm sm:text-base border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:border-purple-500 dark:focus:border-purple-400  focus:ring-purple-500/20 transition-all"
                   placeholder="Your name"
                   aria-label="Your name"
                 />
@@ -900,7 +971,7 @@ function App() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 text-sm sm:text-base border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 text-sm sm:text-base border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:border-purple-500 dark:focus:border-purple-400  focus:ring-purple-500/20 transition-all"
                   placeholder="your.email@example.com"
                   aria-label="Your email"
                 />
@@ -916,7 +987,7 @@ function App() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
                 rows={5}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 text-sm sm:text-base border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 resize-none transition-all"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 text-sm sm:text-base border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg sm:rounded-xl focus:border-purple-500 dark:focus:border-purple-400  focus:ring-purple-500/20 resize-none transition-all"
                 placeholder="Your message..."
                 aria-label="Your message"
               />
@@ -924,7 +995,7 @@ function App() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 font-semibold text-base sm:text-lg"
+              className="w-full flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed  focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 font-semibold text-base sm:text-lg"
             >
               <Send size={18} className="sm:w-5 sm:h-5" />
               <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
@@ -932,6 +1003,7 @@ function App() {
           </form>
         </div>
       </section>
+
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -942,6 +1014,7 @@ function App() {
         draggable
         theme={isDark ? 'dark' : 'light'}
       />
+
       {/* Footer */}
       <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-gray-200 dark:border-slate-800/50 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm transition-colors">
         <div className="max-w-6xl mx-auto text-center text-sm sm:text-base text-gray-600 dark:text-gray-400">
