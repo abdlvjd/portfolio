@@ -29,6 +29,8 @@ import {
   Instagram,
   Phone
 } from 'lucide-react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -83,12 +85,19 @@ function App() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     setTimeout(() => {
-      alert('Thank you for your message! I will get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
+
+      toast.success('Message sent successfully. I will get back to you soon.', {
+        position: 'top-right',
+        autoClose: 3000,
+        theme: isDark ? 'dark' : 'light'
+      });
     }, 1000);
   };
+
 
   const handleCloseModal = () => {
     setSelectedProject(null);
@@ -113,7 +122,7 @@ function App() {
   const projects = [
     {
       title: 'Planzo Creations',
-      description: ' Designed and developed a responsive professional website for Planzo Creations, showcasing real estate back-office and marketing services with structured sections, portfolio, and lead-generation forms.',
+      description: 'Designed and developed a responsive professional website for Planzo Creations, showcasing real estate back-office and marketing services with structured sections, portfolio, and lead-generation forms.',
       tech: ['HTML', 'CSS', 'JavaScript', 'React.JS'],
       image: planzo,
       demo: 'https://www.planzocreations.com/',
@@ -139,8 +148,8 @@ function App() {
         'Optimized UI structure for clarity, accessibility, and performance'
       ],
       impact: [
-        'Delivered a production-ready business website used in a real-world commercial environment',
-        'Improved service visibility and brand credibility through a modern, structured UI',
+        'Delivered a fully responsive business website actively used to present services and capture client inquiries, improving online credibility and lead accessibility.',
+        'Structured service content and navigation to make offerings clearer and easier to understand for potential clients.',
         'Enabled effective lead capture through integrated inquiry forms',
         'Reduced future development effort through reusable UI components'
       ]
@@ -208,7 +217,7 @@ function App() {
       ],
       impact: [
         'Delivered a production-ready healthcare website used by real users',
-        'Improved accessibility and clarity of hospital service information',
+        'Organized healthcare content into structured sections to improve readability and make essential information easier for patients to access.',
         'Enhanced patient engagement through clear navigation and inquiry options',
         'Established a reliable online presence for the hospital'
       ]
@@ -262,13 +271,13 @@ function App() {
       title: 'React Developer',
       company: 'Planzo Creations',
       period: '2024 – Present',
-      description: 'Building responsive web applications with React, implementing UI/UX designs, and optimizing frontend performance.'
+      description: 'Developing and maintaining production React applications, implementing responsive UI components, integrating APIs, and improving performance across devices.'
     },
     {
       title: 'Junior Zoho Developer',
       company: 'Nurture Spark Digital',
       period: '2024',
-      description: 'Developed custom solutions using Zoho tools, integrated APIs, and created automated workflows.'
+      description: 'Built custom workflows and integrations using Zoho tools to automate business processes and improve operational efficiency.'
     },
     {
       title: 'MERN Stack Developer Intern',
@@ -315,7 +324,7 @@ function App() {
                 href="https://github.com/abdlvjd"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
                 aria-label="GitHub profile"
               >
                 <Github size={18} className="sm:w-5 sm:h-5" />
@@ -324,14 +333,14 @@ function App() {
                 href="https://www.linkedin.com/in/abdul-vajid-509255312/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin size={18} className="sm:w-5 sm:h-5" />
               </a>
               <button
                 onClick={toggleTheme}
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:scale-110 hover:rotate-12 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:-translate-y-0.5 hover:rotate-12 focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-1.5 sm:p-2"
                 aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
               >
                 {isDark ? <Sun size={18} className="sm:w-5 sm:h-5" /> : <Moon size={18} className="sm:w-5 sm:h-5" />}
@@ -342,11 +351,11 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center pt-20 sm:pt-16 px-4 sm:px-6 pb-12 sm:pb-0 relative overflow-hidden">
+      <section id="hero" className="min-h-screen flex items-center justify-center pt-24 sm:pt-24 px-4 sm:px-6 pb-12 sm:pb-0 relative overflow-hidden">
         {/* Animated background gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 -right-40 w-60 h-60 sm:w-80 sm:h-80 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 -left-40 w-60 h-60 sm:w-80 sm:h-80 bg-indigo-300/20 dark:bg-indigo-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 -right-40 w-60 h-60 sm:w-80 sm:h-80 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-0 -left-40 w-60 h-60 sm:w-80 sm:h-80 bg-indigo-300/20 dark:bg-indigo-500/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
@@ -363,18 +372,22 @@ function App() {
             Frontend Developer <span className="text-purple-600 dark:text-purple-400">(React)</span>
           </p>
           <p className={`text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4 ${hasReducedMotion ? '' : 'opacity-0 animate-fade-in-delay-3'}`}>
-            Building responsive, user-focused interfaces that combine clean design with performance
+            I build fast, scalable React applications that turn complex requirements into clean, reliable user experiences.
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100/80 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium border border-indigo-200/50 dark:border-indigo-700/50 mb-6">
+            <Sparkles size={14} className="text-indigo-600 dark:text-indigo-400" />
+            Nearly 2 years professional experience • 3+ years overall development experience
+          </div>
           <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 ${hasReducedMotion ? '' : 'opacity-0 animate-fade-in-delay-4'}`}>
             <button
               onClick={() => scrollToSection('projects')}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 font-medium text-sm sm:text-base"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 font-medium text-sm sm:text-base"
             >
               View Projects
             </button>
             <button
               onClick={handleDownloadResume}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium text-sm sm:text-base"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium text-sm sm:text-base"
             >
               Download Resume
             </button>
@@ -386,12 +399,12 @@ function App() {
             </div>
             <div className="flex items-center gap-1.5 sm:gap-2 bg-blue-100/80 dark:bg-blue-900/30 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-200/50 dark:border-blue-700/50">
               <Sparkles size={14} className="sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-              <span className="text-blue-700 dark:text-blue-300 font-medium whitespace-nowrap">Visiting Visa Available</span>
+              <span className="text-blue-700 dark:text-blue-300 font-medium whitespace-nowrap">Currently in Visiting Visa</span>
             </div>
           </div>
           <button
             onClick={() => scrollToSection('about')}
-            className={`mt-12 sm:mt-16 text-gray-400 dark:text-gray-500 hover:text-purple-600 dark:hover:text-purple-400 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-2 ${hasReducedMotion ? '' : 'animate-bounce'}`}
+            className={`mt-12 sm:mt-16 text-gray-400 dark:text-gray-500 hover:text-purple-600 dark:hover:text-purple-400 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-lg p-2 ${hasReducedMotion ? '' : 'animate-pulse'}`}
             aria-label="Scroll to about section"
           >
             <ChevronDown size={28} className="sm:w-8 sm:h-8" />
@@ -403,7 +416,7 @@ function App() {
       <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 right-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10">
@@ -416,18 +429,52 @@ function App() {
           </div>
           <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-gray-100 dark:border-slate-700/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300">
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
-              I'm a Frontend Developer specializing in React, with a strong foundation in HTML, CSS, and JavaScript.
-              I focus on converting UI/UX designs into clean, production-ready code that users enjoy interacting with.
+              I’m a React frontend developer with hands-on experience building production websites used by real businesses. I specialize in translating complex requirements into scalable, maintainable UI systems.
             </p>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
-              My experience ranges from building responsive websites to developing dynamic React applications that consume
-              REST APIs. I prioritize writing maintainable code, optimizing performance, and delivering projects that meet
-              both user needs and business goals.
+              I’ve worked on commercial projects across real estate and healthcare domains, building responsive interfaces, integrating APIs, and improving usability across devices.
+            </p>
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
+              My focus is writing clean, modular code that is easy to maintain, performs reliably, and supports business growth — not just visually appealing interfaces.
             </p>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Currently available for immediate joining with visiting visa arrangements in place. I'm looking for opportunities
-              where I can contribute to meaningful projects and continue growing as a developer.
+              Currently available to join immediately and contribute to product teams that value ownership and execution.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What I Bring Section */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+              What I Bring to a Team
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Core strengths I focus on when building production frontend systems.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+
+            {[
+              "Scalable component architecture designed for long-term maintainability",
+              "Ability to translate complex business requirements into intuitive UX",
+              "Clean, readable frontend code with strong separation of concerns",
+              "Proven ability to ship production-ready features efficiently"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-5 rounded-xl bg-white/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm"
+              >
+                <p className="text-gray-700 dark:text-gray-300 font-medium">
+                  {item}
+                </p>
+              </div>
+            ))}
+
           </div>
         </div>
       </section>
@@ -436,7 +483,7 @@ function App() {
       <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute bottom-20 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
@@ -446,13 +493,13 @@ function App() {
               <span className="font-medium">My Expertise</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-indigo-900 dark:from-white dark:to-indigo-200 bg-clip-text text-transparent mb-2 sm:mb-3">Skills</h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Technologies I work with</p>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Technologies I use to build scalable frontend applications and production websites.</p>
           </div>
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="group px-4 sm:px-6 py-2.5 sm:py-3.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-700 rounded-lg sm:rounded-xl text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all cursor-default focus:outline-none focus:ring-2 focus:ring-purple-500/50 font-medium relative overflow-hidden"
+                className="group px-4 sm:px-6 py-2.5 sm:py-3.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-gray-200 dark:border-slate-700 rounded-lg sm:rounded-xl text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all cursor-default focus:outline-none focus:ring-2 focus:ring-purple-500/50 font-medium relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/5 to-purple-500/0 group-hover:via-purple-500/10 transition-all"></div>
                 <span className="relative">{skill}</span>
@@ -466,8 +513,8 @@ function App() {
       <section id="projects" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-0 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -477,20 +524,20 @@ function App() {
               <span className="font-medium">Portfolio</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-purple-900 dark:from-white dark:to-purple-200 bg-clip-text text-transparent mb-2 sm:mb-3">Projects</h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Recent work and side projects</p>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Production projects and real client work</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 group flex flex-col h-full border border-gray-100 dark:border-slate-700/50 hover:scale-[1.02]"
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 group flex flex-col h-full border border-gray-100 dark:border-slate-700/50 hover:-translate-y-1"
               >
                 <div className="relative overflow-hidden h-40 sm:h-48">
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className={`w-full h-full object-cover transition-transform duration-500 ${hasReducedMotion ? '' : 'group-hover:scale-110'}`}
+                    className={`w-full h-full object-cover transition-transform duration-500 ${hasReducedMotion ? '' : 'group-hover:-translate-y-0.5'}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -544,7 +591,7 @@ function App() {
           aria-labelledby={`project-${selectedProject}-title`}
         >
           <div
-            className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 dark:border-slate-700/50"
+            className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 dark:border-slate-700/50"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -687,7 +734,7 @@ function App() {
       <section id="experience" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10">
@@ -697,13 +744,13 @@ function App() {
               <span className="font-medium">Career Path</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-indigo-900 dark:from-white dark:to-indigo-200 bg-clip-text text-transparent mb-2 sm:mb-3">Experience</h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Professional journey</p>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Professional experience</p>
           </div>
           <div className="space-y-4 sm:space-y-6">
             {experience.map((job, index) => (
               <div
                 key={index}
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all border-l-4 border-purple-500 dark:border-purple-400 hover:scale-[1.02] duration-300 border border-gray-100 dark:border-slate-700/50"
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all border-l-4 border-purple-500 dark:border-purple-400 hover:-translate-y-1 duration-300 border border-gray-100 dark:border-slate-700/50"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2 sm:mb-3 gap-2">
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">{job.title}</h3>
@@ -724,8 +771,8 @@ function App() {
       <section id="contact" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute bottom-0 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-2xl"></div>
+          <div className="absolute top-20 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-200/20 dark:bg-indigo-800/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10">
@@ -735,12 +782,12 @@ function App() {
               <span className="font-medium">Let's Connect</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-purple-900 dark:from-white dark:to-purple-200 bg-clip-text text-transparent mb-2 sm:mb-3">Get In Touch</h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Available for immediate joining</p>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Available for immediate joining and open to frontend or React development opportunities.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
             {/* Email Card */}
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all border border-gray-100 dark:border-slate-700/50 hover:scale-105 duration-300">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all border border-gray-100 dark:border-slate-700/50 hover:-translate-y-1 duration-300">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="p-2 sm:p-3 bg-purple-100/80 dark:bg-purple-900/30 rounded-xl sm:rounded-2xl border border-purple-200/50 dark:border-purple-700/50 flex-shrink-0">
                   <Mail className="text-purple-600 dark:text-purple-400" size={20} />
@@ -758,7 +805,7 @@ function App() {
             </div>
 
             {/* Phone Card */}
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all border border-gray-100 dark:border-slate-700/50 hover:scale-105 duration-300">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all border border-gray-100 dark:border-slate-700/50 hover:-translate-y-1 duration-300">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="p-2 sm:p-3 bg-emerald-100/80 dark:bg-emerald-900/30 rounded-xl sm:rounded-2xl border border-emerald-200/50 dark:border-emerald-700/50 flex-shrink-0">
                   <Phone className="text-emerald-600 dark:text-emerald-400" size={20} />
@@ -788,7 +835,7 @@ function App() {
                       href="https://github.com/abdlvjd"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-100 dark:bg-slate-700 rounded-lg sm:rounded-xl hover:bg-gray-200 dark:hover:bg-slate-600 transition-all hover:scale-105 font-medium text-gray-700 dark:text-gray-300"
+                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-100 dark:bg-slate-700 rounded-lg sm:rounded-xl hover:bg-gray-200 dark:hover:bg-slate-600 transition-all hover:-translate-y-1 font-medium text-gray-700 dark:text-gray-300"
                     >
                       <Github size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
                       <span className="truncate">GitHub</span>
@@ -797,7 +844,7 @@ function App() {
                       href="https://www.linkedin.com/in/abdul-vajid-509255312/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg sm:rounded-xl hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all hover:scale-105 font-medium text-blue-700 dark:text-blue-300"
+                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg sm:rounded-xl hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all hover:-translate-y-1 font-medium text-blue-700 dark:text-blue-300"
                     >
                       <Linkedin size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
                       <span className="truncate">LinkedIn</span>
@@ -806,7 +853,7 @@ function App() {
                       href="https://wa.me/+971544551920"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg sm:rounded-xl hover:bg-green-200 dark:hover:bg-green-900/50 transition-all hover:scale-105 font-medium text-green-700 dark:text-green-300"
+                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg sm:rounded-xl hover:bg-green-200 dark:hover:bg-green-900/50 transition-all hover:-translate-y-1 font-medium text-green-700 dark:text-green-300"
                     >
                       <MessageCircle size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
                       <span className="truncate">WhatsApp</span>
@@ -815,7 +862,7 @@ function App() {
                       href="https://www.instagram.com/abdl_vjd/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-pink-100 dark:bg-pink-900/30 rounded-lg sm:rounded-xl hover:bg-pink-200 dark:hover:bg-pink-900/50 transition-all hover:scale-105 font-medium text-pink-700 dark:text-pink-300"
+                      className="flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5 bg-pink-100 dark:bg-pink-900/30 rounded-lg sm:rounded-xl hover:bg-pink-200 dark:hover:bg-pink-900/50 transition-all hover:-translate-y-1 font-medium text-pink-700 dark:text-pink-300"
                     >
                       <Instagram size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
                       <span className="truncate">Instagram</span>
@@ -877,7 +924,7 @@ function App() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 font-semibold text-base sm:text-lg"
+              className="w-full flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl transition-all hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 font-semibold text-base sm:text-lg"
             >
               <Send size={18} className="sm:w-5 sm:h-5" />
               <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
@@ -885,11 +932,20 @@ function App() {
           </form>
         </div>
       </section>
-
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme={isDark ? 'dark' : 'light'}
+      />
       {/* Footer */}
       <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-gray-200 dark:border-slate-800/50 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm transition-colors">
         <div className="max-w-6xl mx-auto text-center text-sm sm:text-base text-gray-600 dark:text-gray-400">
-          <p className="font-medium">© 2026 Abdul Vajid. Built with React & Tailwind CSS.</p>
+          <p className="font-medium">© 2026 Abdul Vajid. Built with React and Tailwind CSS</p>
         </div>
       </footer>
     </div>
